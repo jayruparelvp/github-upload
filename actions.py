@@ -1,12 +1,3 @@
-from rasa_sdk.forms import FormAction
-from rasa_sdk.executor import CollectingDispatcher
-from rasa_sdk import Action, Tracker
-from rasa_sdk.events import SlotSet, FollowupAction, AllSlotsReset
-from typing import Text, List, Dict, Any
-import mysql.connector
-import json
-import re
-import mpu
 from emailcheck import SendEmailOrder
 cnx = mysql.connector.connect(buffered=True,user='root', password='voiceplug', database='voiceplugorder')
 mycursor = cnx.cursor()
@@ -1114,7 +1105,7 @@ class CustomerDetailsName(FormAction):
         cnx.commit()
         if (deliver_type.lower() == "pickup"):
            sendOrderEmail(order_no,phone)
-           dispatcher.utter_message("Your order is confirmed and the order number is {}. It will be ready for pickup in 30 minutes. Have a nice day".format(order_no))           
+           dispatcher.utter_message("Your order is confirmed and the order number is {}. It will be ready for pickup in 30 minutes. Have a nice day".format(order_no))
            return[AllSlotsReset()]
         return[SlotSet("zip",None),SlotSet("cust_response",None)]
 
