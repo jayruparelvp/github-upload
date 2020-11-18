@@ -1,0 +1,419 @@
+actions:
+- start_action
+- change_qty_action
+- change_size_action
+- check_customer_type
+- check_payment_info
+- checkout_action
+- find_item
+- order_action
+- remove_item_action
+- reset_item
+- reset_slots
+- respond_faq
+- show_cart_action
+- add_ingredient_action
+- remove_ingredient_action
+- substitute_ingredient_action
+- show_ingredient_action
+- customize_item_action
+- edit_item_action
+- inquire_item_action
+- ask_size_options_action
+- utter_ask_card_cvv
+- utter_ask_card_month
+- utter_ask_card_name
+- utter_ask_card_no
+- utter_ask_card_year
+- utter_ask_zip
+- utter_ask_city
+- utter_ask_phone
+- utter_ask_rephrase
+- utter_ask_state
+- utter_ask_street
+- utter_ask_zip_delivery
+- utter_ask_zip_pickup
+- utter_checkout_delivery
+- utter_checkout_pickup
+- utter_deliver_type
+- utter_end_conversation
+- utter_greet
+- utter_inquire_status
+- utter_out_of_scope
+- utter_show_menu
+- utter_start
+- utter_restart_order
+- utter_stop_mic
+- utter_stop_mic_next
+- utter_wrong_phone
+- utter_wrong_street
+- utter_wrong_city
+- utter_wrong_state
+- utter_wrong_zip
+- utter_appreciate_response
+- utter_default
+entities:
+- cust_response
+- card_cvv
+- card_month
+- card_name
+- card_no
+- card_year
+- category
+- city
+- deliver_type
+- index
+- index_qty
+- item
+- old_qty
+- phone
+- qty
+- side
+- size
+- old_size
+- size_response
+- state
+- street
+- group
+- subcategory
+- zip
+- ing_type1
+- ing_type2
+- ing_type3
+- ing_type4
+- ing_type5
+forms:
+- customer_details_complete
+- customer_details_name
+- payment_info_complete
+- payment_info_short
+intents:
+- checkout
+- start
+- change_size:
+    use_entities:
+      - item
+      - size
+    ignore_entities:
+      - qty
+      - old_qty
+      - category
+      - group
+      - subcategory
+      - index
+      - index_qty
+- change_qty:
+    use_entities:
+      - item
+      - qty
+      - old_qty
+    ignore_entities:
+      - size
+      - category
+      - group
+      - subcategory
+      - index
+      - index_qty
+- remove_item:
+    use_entities:
+      - item
+      - index
+      - index_qty
+      - ing_type1
+      - ing_type2
+      - ing_type3
+      - ing_type4
+      - ing_type5
+    ignore_entities:
+      - size
+      - qty
+      - old_qty
+      - category
+      - group
+      - subcategory
+- order_option:
+    use_entities:
+      - deliver_type
+- inform:
+    ignore_entities:
+      - item
+      - category
+      - group
+      - subcategory
+      - card_no
+      - card_month
+      - card_year
+      - card_cvv
+      - card_name
+- inform_card:
+    use_entities:
+      - card_no
+      - card_month
+      - card_year
+      - card_cvv
+      - card_name
+      - zip
+    ignore_entities:
+      - item
+      - category
+      - group
+      - subcategory
+      - street
+      - city
+      - state
+- build_order_single:
+    use_entities:
+      - item
+      - category
+      - group
+      - subcategory
+      - qty
+      - size
+    ignore_entities:
+      - card_name
+- build_order_multiple:
+    use_entities:
+      - item
+      - category
+      - group
+      - subcategory
+      - qty
+      - size
+- address_status:
+    use_entities:
+      - cust_response
+- add_ingredient:
+    use_entities:
+      - item
+      - ing_type1
+      - ing_type2
+      - ing_type3
+      - ing_type4
+      - ing_type5
+- remove_ingredient:
+    use_entities:
+      - item
+      - ing_type1
+      - ing_type2
+      - ing_type3
+      - ing_type4
+      - ing_type5
+- substitute_ingredient:
+    use_entities:
+      - item
+      - ing_type1
+      - ing_type2
+      - ing_type3
+      - ing_type4
+      - ing_type5
+- show_ingredient:
+    use_entities:
+      - item
+- customize_item:
+    use_entities:
+      - item
+- edit_item:
+    use_entities:
+      - item
+- inquire_item:
+    use_entities:
+      - item
+- ask_size_options:
+    use_entities:
+      - item
+- greet
+- inquire_status
+- end_conversation
+- appreciate
+- thank
+- faq
+- out_of_scope
+- show_menu
+- show_cart
+- restart_order
+- stop_mic
+responses:
+  utter_ask_card_cvv:
+  - text: Say or enter the 3 or 4 digit CVV number
+  utter_ask_card_month:
+  - text: Please say or enter the expiry month in m m format. As an example for August say or enter 0 8
+  utter_ask_card_name:
+  - text: Please say the full name on the card
+  utter_ask_card_no:
+  - text: Please say or enter the 15 or 16 digit number of the card you would like to use for payment
+  utter_ask_card_year:
+  - text: Say or enter the expiry year in y y format. As an example for the year 2022 say or enter 2 2
+  utter_ask_city:
+  - text: City?
+  utter_ask_phone:
+  - text: What is your phone number?
+  utter_ask_rephrase:
+  - text: Sorry I am not clear what you would like. Please rephrase your request or if you would like to know what's on our menu say MENU
+  utter_ask_state:
+  - text: State?
+  utter_ask_street:
+  - text: What is the Street Address for delivery?
+  utter_ask_zip:
+  - text: Please say or enter the 5 digit Zip Code associated with the card's billing address
+  utter_ask_zip_delivery:
+  - text: Please say or enter the five digit zipcode of the location where you would like the order delivered
+  utter_ask_zip_pickup:
+  - text: Please say or enter the five digit zipcode of your current location so that I can find our restaurant nearest to you
+  utter_checkout_delivery:
+  - text: Your order will be delivered to your adrress at {street} in {city} within 45 to 60 minutes. Have a nice day.
+  utter_checkout_pickup:
+  - text: Your order is confirmed and the order number is {order_no}. It will be ready for pickup in 30 minutes. Have a nice day.
+  utter_deliver_type:
+  - text: Let me know if you would like to order for Delivery or pickup
+  utter_single_pickup:
+  - text: What would you like to order for pickup?
+  utter_end_conversation:
+  - text: Take care. Bye now.
+  utter_greet:
+  - text: Hi. What would you like to order?
+  utter_inquire_status:
+  - text: Give me your phone number so that I can find the status of your order.
+  utter_appreciate_response:
+  - text: I am glad I could be of help. I am here to make your food ordering experience quick and easy.
+  utter_thank_response:
+  - text: You're most welcome.
+  utter_out_of_scope:
+  - text: Sorry I cannot handle that request.
+  utter_show_menu:
+  - text: Our menu includes Indian Vegetarian Pizzas, Indian Chicken Pizzas, Italian Pizzas, Fusion Pizza, Starters, Salads, Desserts and Drinks. What would you like to order?
+  utter_start:
+  - text: Who do I have the pleasure of speaking with?
+  utter_restart_order:
+  - text: I have cleared your cart and am ready to restart your order
+  utter_stop_mic:
+  - text: I have stopped listening to your microphone. When you would like to start click on the microphone button
+  utter_stop_mic_next:
+  - text: stopmic#
+  utter_wrong_phone:
+  - text: Please say a valid 10 digit phone number
+  utter_wrong_street:
+  - text: Please say a valid street
+  utter_wrong_city:
+  - text:  Please say a valid city
+  utter_wrong_state:
+  - text: Please say a valid state
+  utter_wrong_card_no:
+  - text: This is not a valid credit card number
+  utter_wrong_card_month:
+  - text: Please say a valid expiry month for the card in m m format. For example say zero eight for august
+  utter_wrong_card_year:
+  - text: Please say a valid expiry year for the card in y y format. For example two two for 2022
+  utter_wrong_cvv:
+  - text: Please say a valid 3 or 4 digit CVV number for your card
+  utter_wrong_card_name:
+  - text: Please say the full name on the card
+  utter_wrong_zip:
+  - text: Please say a valid five digit zip code
+  utter_default:
+  - text: I could not understand that. Please rephrase your request.
+session_config:
+  carry_over_slots_to_new_session: true
+  session_expiration_time: 0
+slots:
+  cust_response:
+    type: categorical
+    values:
+    - same
+    - different
+    - incomplete
+    - complete
+    - __other__
+  card_cvv:
+    type: unfeaturized
+  card_month:
+    type: unfeaturized
+  card_name:
+    type: unfeaturized
+  card_no:
+    type: unfeaturized
+  card_year:
+    type: unfeaturized
+  category:
+    type: unfeaturized
+  city:
+    type: unfeaturized
+  current_customer:
+    type: bool
+  deliver_type:
+    type: categorical
+    values:
+    - delivery
+    - pickup
+    - delivery or pickup
+    - unassigned
+    - __other__
+  index:
+    type: categorical
+    values:
+    - all
+    - first
+    - last
+    - __other__
+  index_qty:
+    type: unfeaturized
+  item:
+    type: list
+  item_has_size:
+    type: bool
+  item_in_list:
+    type: bool
+  same_item:
+    type: bool
+  order_id_list:
+    type: list
+  order_no:
+    type: unfeaturized
+  order_qty_list:
+    type: list
+  phone:
+    type: unfeaturized
+  qty:
+    type: list
+  requested_slot:
+    type: unfeaturized
+  size:
+    type: list
+  size_response:
+    type: unfeaturized
+  state:
+    type: unfeaturized
+  street:
+    type: unfeaturized
+  group:
+    type: unfeaturized
+  subcategory:
+    type: unfeaturized
+  zip:
+    type: unfeaturized
+  customize:
+    type: list
+  custom_ingtype1:
+    type: list
+  custom_ingtype2:
+    type: list
+  custom_ingtype3:
+    type: list
+  custom_ingtype4:
+    type: list
+  custom_ingtype5:
+    type: list
+  rest_deliver:
+    type: categorical
+    values:
+    - delivery
+    - pickup
+    - delivery or pickup
+    - __other__
+  rest_location:
+    type: categorical
+    values:
+    - single
+    - multiple
+    - __other__
+  CurrentItems:
+    type: unfeaturized
