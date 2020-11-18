@@ -1,8 +1,3 @@
-from emailcheck import SendEmailOrder
-cnx = mysql.connector.connect(buffered=True,user='root', password='voiceplug', database='voiceplugorder')
-mycursor = cnx.cursor()
-entity_value = []
-
 def showInfo(group,category,subcategory,dispatcher:CollectingDispatcher):
     if group: catgroup = group
     elif subcategory: catgroup = subcategory
